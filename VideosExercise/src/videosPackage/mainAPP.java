@@ -1,35 +1,50 @@
 package videosPackage;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class mainAPP extends User {
 
 	public static void main(String[] args) {
 		
+		List<User> usuario = new ArrayList<User>();
 		
 		//main menu: display menu y retorno opcion (int)
 		int OptionMainMenu=mainMenu();
 				
 		
-		//verifico el valor retornado con try catch o throw exception
-		// obtengo valor filtrado (int)
+		//verifico el valor retornado con try catch o throw exception y obtengo valor filtrado (int)
 		
 		
 		// Switch case para cada opcion devuelta
 		
+		System.out.println(OptionMainMenu);
+		
+		
+		
 		switch(OptionMainMenu)
 	     {
 	        case 1:
-	        	//CreateNewUser
+	        	//"CreateNewUser"
+	        	System.out.println("\nCreate...");        	
+	        	break;
 	        case 2:
-	        	//logIn
+	        	//"logIn"
+	        	System.out.println("\nlogIn...");
+	    		//addNewUserMenu
+	        	
+
+	        	break;
 	        case 3:
-	        	//exit
+	        	//"exit"
+	        	System.out.println("\nExit...");
+	        	break;
 	      }
 		
 		
-		//addNewUserMenu
+		
 	
 		//soltar la pantalla de menu
 		
@@ -68,50 +83,10 @@ public class mainAPP extends User {
 		
 	}
 	
-	public static int mainMenu()
-	{
-		Scanner sc = new Scanner(System.in);
-		int option=0;
+	/*
 
-		System.out.println("Welcome to VideoApp");
-		System.out.println("Choose an option: ");
-		System.out.println("1. Create New User");
-		System.out.println("2. LogIn");
-		System.out.println("3. Exit");
-		option=sc.nextInt();
-		
-		return option;		
-	}
 	
-	public static void createNewUser() {
-		Scanner sc = new Scanner(System.in);
-		//creo una lista de usuarios
-		List<User> usuario = new ArrayList<User>();
-
-		System.out.println("Create New User");
-		System.out.println("Name: ");
-		String name=sc.nextLine();
-		System.out.println("Surname: ");
-		String surname=sc.nextLine();
-		
-		do {
-			System.out.println("Password: ");
-			String password=sc.nextLine();
-			System.out.println("Repeat Password: ");
-			String repassword=sc.nextLine();
-			
-			if(!password.equals(repassword)) {
-				System.out.println("Passwords must be equals, Please Repeat: ");
-			}
-		}while(!password.equals(repassword));
-		
-		String regDate=getDate();
-		
-		
-		
-		
-	}
-		
+		*/
 		
 	
 
