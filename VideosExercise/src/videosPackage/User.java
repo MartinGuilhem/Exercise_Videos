@@ -27,7 +27,8 @@ public class User {
 			this.surname=surname;
 			this.password=password;
 			this.regDate=regDate;
-			List <Video> videoList = new ArrayList <Video>();  //se inicializa la lista de videos en el constructor?
+			List <Video> videoList = new ArrayList <Video>();  //dar parametros por defecto y luego agrego con setters
+			
 		}
 		
 			
@@ -43,49 +44,37 @@ public class User {
 		{
 			Scanner sc = new Scanner(System.in);
 			int option=0;
-
-			System.out.println("Welcome to VideoApp");
-			System.out.println("Choose an option: ");
-			System.out.println("1. Create New User");
-			System.out.println("2. LogIn");
-			System.out.println("3. Exit");
-			option=sc.nextInt();
+			
+			do {
+				
+				System.out.println("Welcome to VideoApp");
+				System.out.println("Choose an option: ");
+				System.out.println("1. Create New User");
+				System.out.println("2. LogIn");
+				System.out.println("3. Show User List");
+				System.out.println("4. Exit");
+				option=sc.nextInt();
+				
+				if(option!=1 && option!=2 && option!=3 && option!=4)
+				{
+					System.out.println("\n You must put a correct option... please try again\n");
+				}
+				
+			}while(option!=1 && option!=2 && option!=3 && option!=4);
 			
 			return option;		
 		}
 		
+		public String toString(){
+	        return "User Data: \n" +
+	                "\tName: "+name+"\n" +
+	                "\tSurname: "+surname+"\n" +
+	                "\tRegistration Date: "+regDate;
+	    }
 		
 		
-		// como devuelvo una lista con el usuario creado?
 		
-		public static void createNewUser() {
-			Scanner sc = new Scanner(System.in);
-			//creo una lista de usuarios
-			List<User> usuario = new ArrayList<User>();
 
-			System.out.println("Create New User");
-			System.out.println("Name: ");
-			String name=sc.nextLine();
-			System.out.println("Surname: ");
-			String surname=sc.nextLine();
-			
-			do {
-				System.out.println("Password: ");
-				String password=sc.nextLine();
-				System.out.println("Repeat Password: ");
-				String repassword=sc.nextLine();
-				
-				if(!password.equals(repassword)) {
-					System.out.println("Passwords must be equals, Please Repeat: ");
-				}
-			}while(!password.equals(repassword));
-			
-			String regDate=getDate();
-			
-			
-			
-			
-		}
 
 
 		
