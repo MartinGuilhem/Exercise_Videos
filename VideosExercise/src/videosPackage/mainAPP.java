@@ -42,20 +42,20 @@ public class mainAPP extends User {
 			System.out.println("\n\tPress '1' to continue operating.\n");
 			ask=Integer.parseInt(sc.nextLine());
 						
-		}while(ask==1);
-			
-				
+		}while(ask==1);		
+
 	}
 	
-	/*
-	System.out.println("Lista de usuarios:\n");
 	
-	for(User usr: user)
-	{
-		System.out.println(user.toString());
-	}
-	*/
+//	System.out.println("Lista de nombres de usuarios:\n");
+//	
+//	for(User usr: user)
+//	{
+//		System.out.println(user.);
+//	}
 	
+	
+//	funcion: lee datos y retorna objeto user listo para agregar a la lista usuario en el main
 	public static User createNewUser() {
 		Scanner sc = new Scanner(System.in);
 		String password, repassword;
@@ -87,8 +87,40 @@ public class mainAPP extends User {
 		return aux;
 	}
 	
-}
+	
+//	mando la lista, pido datos, los comparo y si pertenece devuelvo la posicion en la lista (int), sino,(-1) 
+	public static int logIn(List<User> user) {
+		Scanner sc = new Scanner(System.in);
+		String name, surname, password;
+		int aux=-1;
 		
+		System.out.println("Name: ");
+		name=sc.nextLine();
+		System.out.println("Surname: ");
+		surname=sc.nextLine();
+		System.out.println("Password: ");
+		password=sc.nextLine();
+		
+		for(int i=0; i<user.size(); i++) {
+			
+			if(equals(name, surname, password, user.get(i)))
+			{
+				aux=i;
+			}
+		}		
+		return aux;				
+	}
+	
+	
+	public static boolean equals(String name, String surname, String pass, User a){
+		 
+        if(a.getName().equals(name) && a.getSurname().equals(surname) && a.getPass().equals(pass)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+	
+	
 
-
-
+}

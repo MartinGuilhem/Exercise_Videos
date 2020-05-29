@@ -27,11 +27,25 @@ public class User {
 			this.surname=surname;
 			this.password=password;
 			this.regDate=regDate;
-			List <Video> videoList = new ArrayList <Video>();  //dar parametros por defecto y luego agrego con setters
-			
+			List <Video> videoList = new ArrayList <Video>();  //dar parametros por defecto y luego agrego con setter		
 		}
 		
-			
+		public String getName()
+		{
+			return name;
+		}
+		
+		public String getSurname()
+		{
+			return surname;
+		}
+		
+		public String getPass()
+		{
+			return password;
+		}
+		
+//		retorna el regDate
 		public static String getDate()
 		{
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
@@ -40,6 +54,7 @@ public class User {
 			return dtf.format(now);
 		}
 		
+//		menu principal, retorna valor opcion
 		public static int mainMenu()
 		{
 			Scanner sc = new Scanner(System.in);
@@ -72,10 +87,5 @@ public class User {
 	                "\tRegistration Date: "+regDate;
 	    }
 		
-		
-		
-
-
-
-		
+				
 }
