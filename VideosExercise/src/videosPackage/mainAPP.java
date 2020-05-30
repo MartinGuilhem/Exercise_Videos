@@ -12,11 +12,9 @@ public class mainAPP extends User {
 		Scanner sc = new Scanner(System.in);
 		List<User> user = new ArrayList<User>();
 				
-		//main menu: display menu y retorno opcion (int)
-		int OptionMainMenu, ask;
+		
+		int OptionMainMenu, ask, iuser;
 						
-		
-		
 		do {
 			OptionMainMenu=mainMenu();					
 			switch(OptionMainMenu)
@@ -25,13 +23,13 @@ public class mainAPP extends User {
 	        		user.add(createNewUser());
 	        		break;
 	        	case 2:
-	        		//"logIn"
-	        		System.out.println("\nlogIn...");
-	        		//addNewUserMenu
+	        		iuser=logIn(user);
+	        		System.out.println(iuser+ "es la posicion del usuario en la lista");
+	        		//lo proximo sera ingresar al menu dentro del login con iuser para modificar lo q sea de esa posicion de memoria dentro del login
 	        		break;
 	        	case 3:
-	        		//"Show User list"
-	        		System.out.println("\nExit...");
+	        		System.out.println("\nShow User List...");
+	        		showUserList(user);
 	        		break;
 	        	case 4:
 	        		//"exit"
@@ -47,12 +45,7 @@ public class mainAPP extends User {
 	}
 	
 	
-//	System.out.println("Lista de nombres de usuarios:\n");
-//	
-//	for(User usr: user)
-//	{
-//		System.out.println(user.);
-//	}
+
 	
 	
 //	funcion: lee datos y retorna objeto user listo para agregar a la lista usuario en el main
@@ -87,39 +80,60 @@ public class mainAPP extends User {
 		return aux;
 	}
 	
-	
+//	LOGIN MENU
 //	mando la lista, pido datos, los comparo y si pertenece devuelvo la posicion en la lista (int), sino,(-1) 
 	public static int logIn(List<User> user) {
 		Scanner sc = new Scanner(System.in);
 		String name, surname, password;
 		int aux=-1;
 		
-		System.out.println("Name: ");
-		name=sc.nextLine();
-		System.out.println("Surname: ");
-		surname=sc.nextLine();
-		System.out.println("Password: ");
-		password=sc.nextLine();
+		do {
+			System.out.println("Login MENU...");
+			System.out.println("Name: ");
+			name=sc.nextLine();
+			System.out.println("Password: ");
+			password=sc.nextLine();
 		
-		for(int i=0; i<user.size(); i++) {
+			for(int i=0; i<user.size(); i++) {
 			
-			if(equals(name, surname, password, user.get(i)))
-			{
-				aux=i;
+				if(equals(name, password, user.get(i)))
+				{
+					aux=i;
+				}
 			}
-		}		
-		return aux;				
+		
+			if(aux==-1)
+			{
+				System.out.println("\n Username or Password is incorrect please input again...");
+			}
+
+		}while(aux==-1);
+		
+		return aux;
 	}
 	
 	
-	public static boolean equals(String name, String surname, String pass, User a){
+	public static boolean equals(String name, String pass, User a){
 		 
-        if(a.getName().equals(name) && a.getSurname().equals(surname) && a.getPass().equals(pass)){
+        if(a.getName().equals(name) && a.getPass().equals(pass)){
             return true;
         }else{
             return false;
         }
     }
+	
+	
+	public static void showUserList(List<User> user) {
+		
+		System.out.println("Lista de nombres de usuarios:\n");
+	
+		for(int i=0; i<user.size(); i++)
+		{
+			System.out.println(user.get(i).toString());
+			System.out.println("-----------------------------------------------");
+		}
+		
+	}
 	
 	
 
