@@ -26,6 +26,7 @@ public class mainAPP extends User {
 	        		iuser=logIn(user);
 	        		System.out.println(iuser+ "es la posicion del usuario en la lista");
 	        		//lo proximo sera ingresar al menu dentro del login con iuser para modificar lo q sea de esa posicion de memoria dentro del login
+	        		//funcion menu login
 	        		break;
 	        	case 3:
 	        		System.out.println("\nShow User List...");
@@ -44,10 +45,7 @@ public class mainAPP extends User {
 
 	}
 	
-	
-
-	
-	
+		
 //	funcion: lee datos y retorna objeto user listo para agregar a la lista usuario en el main
 	public static User createNewUser() {
 		Scanner sc = new Scanner(System.in);
@@ -79,6 +77,7 @@ public class mainAPP extends User {
 		
 		return aux;
 	}
+
 	
 //	LOGIN MENU
 //	mando la lista, pido datos, los comparo y si pertenece devuelvo la posicion en la lista (int), sino,(-1) 
@@ -133,8 +132,75 @@ public class mainAPP extends User {
 			System.out.println("-----------------------------------------------");
 		}
 		
+	}	
+	
+	
+	public static void userMenu(User user)
+	{
+		Scanner sc = new Scanner(System.in);
+		int option=0, ask;
+		
+		
+		System.out.println("\nWelcome "+user.getName()+" what do you want to do?");
+		
+		do {
+			option=userMenu();
+					
+			switch(option)
+			{
+				case 1:
+					//addNewVideo
+					user.setNewVideo(addNewVideo());
+					break;
+				case 2:
+					//deleteVideo
+					break;
+				case 3:
+					//ShowVideoList
+					break;
+				case 4:
+					//"exit"
+					System.out.println("\nExit...");
+					break;	        			        			
+		}
+					
+		System.out.println("\n\tPress '1' to continue operating.\n");
+		ask=Integer.parseInt(sc.nextLine());
+					
+		}while(ask==1);
 	}
+
 	
-	
+	public static Video addNewVideo() {
+		Scanner sc = new Scanner(System.in);
+		String URL, title;
+		char askNewTag;
+		List<String> tags = new ArrayList<>();
+		
+		
+		System.out.println("Add New Video...");
+		System.out.println("Video Title: ");
+		title=sc.nextLine();
+		System.out.println("URL: ");
+		URL=sc.nextLine();
+								
+		do {
+			System.out.println("Do you want to add a new Tagg? (y/n)");
+			askNewTag=sc.next().charAt(0);
+				
+			if(askNewTag=='y')
+			{
+				//addNewTag 
+			}
+			
+		}while(askNewTag=='y');
+		
+		
+		Video aux= new Video(URL, title, tags);
+		
+		return aux;
+	}
+		
+			
 
 }

@@ -19,5 +19,8 @@ public class Video {
 			this.tags=tag; // si paso más de un tag como los traigo? 
 						   //  puedo agregar datos a la lista de tags desde otra funcion !?
 		}
+		
+		
+		
 
 }

@@ -9,7 +9,6 @@ import java.util.Date;
 import java.time.*;
 
 
-
 public class User {
 	
 		//properties
@@ -29,21 +28,25 @@ public class User {
 			this.regDate=regDate;
 			List <Video> videoList = new ArrayList <Video>();  //dar parametros por defecto y luego agrego con setter		
 		}
+			
 		
 		public String getName()
 		{
 			return name;
 		}
 		
+		
 		public String getSurname()
 		{
 			return surname;
 		}
 		
+		
 		public String getPass()
 		{
 			return password;
 		}
+		
 		
 //		retorna el regDate
 		public static String getDate()
@@ -53,6 +56,7 @@ public class User {
 			 
 			return dtf.format(now);
 		}
+		
 		
 //		menu principal, retorna valor opcion
 		public static int mainMenu()
@@ -80,6 +84,7 @@ public class User {
 			return option;		
 		}
 		
+		
 		public String toString(){
 	        return "User Data: \n" +
 	                "\tName: "+name+"\n" +
@@ -87,5 +92,33 @@ public class User {
 	                "\tRegistration Date: "+regDate;
 	    }
 		
+		
+		public static int userMenu()
+		{
+			Scanner sc = new Scanner(System.in);
+			int option=0;
+			
+			do {
+								
+				System.out.println("Choose an option: ");
+				System.out.println("1. Add New Video");
+				System.out.println("2. Delete Video");
+				System.out.println("3. Show Video List");
+				System.out.println("4. Exit");
+				option=sc.nextInt();
 				
+				if(option!=1 && option!=2 && option!=3 && option!=4)
+				{
+					System.out.println("\n You must put a correct option... please try again\n");
+				}
+				
+			}while(option!=1 && option!=2 && option!=3 && option!=4);
+			
+			return option;		
+		}
+				
+
+		public void setNewVideo(Video vid) {
+			this.videoList.add(vid);
+		}
 }
