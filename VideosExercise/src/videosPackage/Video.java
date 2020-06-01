@@ -21,6 +21,16 @@ public class Video {
 		}
 		
 		
+		public String getURL() {
+			return URL;
+		}
+		
+		public String getTitle() {
+			return title;
+		}
+		
+		
+		
 		
 
 }

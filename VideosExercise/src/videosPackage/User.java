@@ -48,6 +48,15 @@ public class User {
 		}
 		
 		
+		public void setNewVideo(Video vid) {
+			this.videoList.add(vid);
+		}
+		
+		public List<Video> getVideoList(){			
+			return videoList;
+		}
+		
+		
 //		retorna el regDate
 		public static String getDate()
 		{
@@ -102,8 +111,8 @@ public class User {
 								
 				System.out.println("Choose an option: ");
 				System.out.println("1. Add New Video");
-				System.out.println("2. Delete Video");
-				System.out.println("3. Show Video List");
+				System.out.println("2. Show Video List");
+				System.out.println("3. Delete Video From List");
 				System.out.println("4. Exit");
 				option=sc.nextInt();
 				
@@ -118,7 +127,5 @@ public class User {
 		}
 				
 
-		public void setNewVideo(Video vid) {
-			this.videoList.add(vid);
-		}
+		
 }
