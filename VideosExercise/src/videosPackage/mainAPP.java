@@ -24,8 +24,6 @@ public class mainAPP extends User {
 	        		break;
 	        	case 2:
 	        		iuser=logIn(user);
-	        		System.out.println(iuser+ " es la posicion del usuario en la lista");
-	        		//funcion menu login con el objeto. modificar objeto dentro del login
 	        		userMenu(user.get(iuser));
 	        		break;
 	        	case 3:
@@ -45,8 +43,69 @@ public class mainAPP extends User {
 
 	}
 	
+	
+	public static void userMenu(User user)
+	{
+		Scanner sc = new Scanner(System.in);		
+		int option=0, ask;
 		
-//	funcion: lee datos y retorna objeto user listo para agregar a la lista usuario en el main
+		
+		System.out.println("\nWelcome "+user.getName()+" what do you want to do?");
+		
+		do {
+			option=userMenu();
+					
+			switch(option)
+			{
+				case 1:
+					user.setNewVideo(addNewVideo());
+					break;
+				case 2:
+					showVideoList(user);
+					break;
+				case 3:
+					deleteVideo(user);
+					break;
+				case 4:
+					//"exit"
+					System.out.println("\nExit...");
+					break;	        			        			
+		}
+					
+		System.out.println("\n\tPress '1' to continue operating.\n");
+		ask=Integer.parseInt(sc.nextLine());
+					
+		}while(ask==1);
+	}
+	
+	
+	public static void deleteVideo(User user) {
+		Scanner sc = new Scanner(System.in);		
+		int num=-1;
+		
+		do {
+
+			System.out.println("\n Select # video you want to delete.. ");
+			for(int i=0; i<user.getVideoList().size(); i++)
+			{
+				System.out.println("-----------------------------------------------");
+				System.out.println("TITLE:");
+				System.out.println("\t"+(i+1)+"- "+user.getVideoList().get(i).getTitle());
+			}
+			System.out.println("\n Select # video you want to delete.. ");
+			num=Integer.parseInt(sc.nextLine());
+			
+			if(num==-1) {
+				System.out.println("Error, you must put a correct option... please try again!");
+			}
+			
+		}while(num!=-1);
+		
+		user.getVideoList().remove(num-1);
+		
+	}
+	
+	
 	public static User createNewUser() {
 		Scanner sc = new Scanner(System.in);
 		String password, repassword;
@@ -79,8 +138,6 @@ public class mainAPP extends User {
 	}
 
 	
-//	LOGIN MENU
-//	mando la lista, pido datos, los comparo y si pertenece devuelvo la posicion en la lista (int), sino,(-1) 
 	public static int logIn(List<User> user) {
 		Scanner sc = new Scanner(System.in);
 		String name, surname, password;
@@ -135,69 +192,35 @@ public class mainAPP extends User {
 	}	
 	
 	
-	public static void userMenu(User user)
-	{
-		Scanner sc = new Scanner(System.in);		
-		int option=0, ask;
-		
-		
-		System.out.println("\nWelcome "+user.getName()+" what do you want to do?");
-		
-		do {
-			option=userMenu();
-					
-			switch(option)
-			{
-				case 1:
-					//addNewVideo
-					user.setNewVideo(addNewVideo());
-					break;
-				case 2:
-					showVideoList(user);
-					break;
-				case 3:
-					//deleteVideoFromList
-					break;
-				case 4:
-					//"exit"
-					System.out.println("\nExit...");
-					break;	        			        			
-		}
-					
-		System.out.println("\n\tPress '1' to continue operating.\n");
-		ask=Integer.parseInt(sc.nextLine());
-					
-		}while(ask==1);
-	}
-
-	
 	public static Video addNewVideo() {
 		Scanner sc = new Scanner(System.in);
-		String URL, title;
-//		char askNewTag;
-		List<String> tags = new ArrayList<>();
+		String URL="", title="", tag="", auxi="";
+		char askNewTag;
+		Video aux= new Video(URL, title);
 		
 		
 		System.out.println("Add New Video...");
 		System.out.println("Video Title: ");
 		title=sc.nextLine();
+		aux.setTitle(title);
 		System.out.println("URL: ");
 		URL=sc.nextLine();
-								
-//		do {
-//			System.out.println("Do you want to add a new Tagg? (y/n)");
-//			askNewTag=sc.next().charAt(0);
-//				
-//			if(askNewTag=='y')
-//			{
-//				addNewTag()
-//			}
-//			
-//		}while(askNewTag=='y');
-//		
-		
-		Video aux= new Video(URL, title, tags);
-		
+		aux.setURL(URL);
+										
+		do {
+			System.out.println("Do you want to add a new Tagg? (y/n)");
+			askNewTag=sc.next().charAt(0);
+			auxi=sc.nextLine();	
+			if(askNewTag=='y')
+			{
+				System.out.println("Tag: ");
+				tag=sc.nextLine();
+				aux.setTag(tag);
+			}
+			
+		}while(askNewTag=='y');
+				
+				
 		return aux;
 	}
 	
@@ -213,33 +236,15 @@ public class mainAPP extends User {
 			System.out.println("\t"+user.getVideoList().get(i).getTitle());
 			System.out.println("URL:");
 			System.out.println("\t"+user.getVideoList().get(i).getURL());
+			System.out.println("TAGS:");
+			
+			for(int j=0; j<user.getVideoList().get(i).getTagList().size(); j++)
+			{
+				System.out.println("\t"+user.getVideoList().get(i).getTagList().get(j));
+			}
 		}
 		
 	}
 			
-
-//	public static String addNewTag(User user) {
-//		
-//		Scanner sc = new Scanner(System.in);
-//		String tag;
-//		boolean exist=false;
-//		
-//		
-//		System.out.println("Enter New Tag: ");
-//		tag=sc.nextLine();
-//		
-//		for(int i=0; i<user.; i++) {
-//			if(tag.compareToIgnoreCase(tags.get(i)))
-//			{
-//				System.out.println("The Tag you entered allready exists");
-//				exist=true;
-//			}
-//		}
-//		if(exist==false) 
-//		{
-//			tags.add(tag);
-//		}
-//		
-//	}
 	
 }

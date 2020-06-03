@@ -9,17 +9,26 @@ public class Video {
 	//properties
 		private String URL;
 		private String title;
-		List<String> tags = new ArrayList<>();
+		private List<String> tagList = new ArrayList<>();
+		
+		List<String> tagList2 = new ArrayList<>();
+		
 		
 		//builder
-		public Video(String URL, String title, List<String> tag)
-		{
+		public Video(String URL, String title){
 			this.URL=URL;
 			this.title=title;
-			this.tags=tag; // si paso más de un tag como los traigo? 
-						   //  puedo agregar datos a la lista de tags desde otra funcion !?
+			this.tagList=tagList2; 
 		}
 		
+		
+		public void setTitle(String title) {
+			this.title=title;
+		}
+		
+		public void setURL(String URL) {
+			this.URL=URL;
+		}
 		
 		public String getURL() {
 			return URL;
@@ -29,8 +38,13 @@ public class Video {
 			return title;
 		}
 		
+		public void setTag(String tag) {
+			this.tagList.add(tag);
+		}
 		
-		
+		public List<String> getTagList(){
+			return tagList;
+		}
 		
 
 }
