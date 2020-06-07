@@ -98,8 +98,8 @@ public class mainAPP extends User {
 			if(num==-1) {
 				System.out.println("Error, you must put a correct option... please try again!");
 			}
-			
-		}while(num!=-1);
+			 
+		}while(num==-1);
 		
 		user.getVideoList().remove(num-1);
 		
